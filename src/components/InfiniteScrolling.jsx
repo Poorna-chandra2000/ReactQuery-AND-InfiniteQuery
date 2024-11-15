@@ -13,7 +13,7 @@ import {useInView} from "react-intersection-observer";
 const InfiniteScrolling = () => {
 
     const fetchFruits=async({pageParam})=>{
-        const url=`/api/fruits?_page=${pageParam}&_per_page=5`
+        const url = `/api/fruits?_page=${pageParam}&_per_page=5`;
         const response= await axios.get(url);
         return response.data;
     }
