@@ -35,7 +35,7 @@ const FetchOnClick = () => {
 
     //for deletion
     const deletePost=async(prductId)=>{
-     const url='http://localhost:4000/posts/'+prductId;
+     const url='/api/posts?id='+prductId;
      return await axios.delete(url);
     }
     const queryClient=useQueryClient();//this is to invalidate and trigure the change on success after del to auto fetch
