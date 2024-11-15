@@ -9,7 +9,7 @@ const FetchOnClick = () => {
 
     // Fetch posts based on the selected product
     const fetchPosts = async () => {
-        const url = 'http://localhost:4000/posts';                  // All products URL
+        const url = '/api/posts';                  // All products URL
         const response = await axios.get(url);
         return response.data;
     };

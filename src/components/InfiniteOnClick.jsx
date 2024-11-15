@@ -6,7 +6,7 @@ import LoadingAnim from "./LoadingAnim.jsx";
 const InfiniteOnClick = () => {
 
     const fetchFruits=async({pageParam})=>{
-      const url=`http://localhost:4000/fruits?_page=${pageParam}&_per_page=5`
+      const url=`/api/fruits?_page=${pageParam}&_per_page=5`
         const response= await axios.get(url);
       return response.data;
     }
