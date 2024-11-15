@@ -9,7 +9,7 @@ const FetchOnClick = () => {
 
     // Fetch posts based on the selected product
     const fetchPosts = async () => {
-        const url = '/api/posts';                  // All products URL
+        const url = 'http://localhost:4000/posts';                  // All products URL
         const response = await axios.get(url);
         return response.data;
     };
@@ -35,7 +35,7 @@ const FetchOnClick = () => {
 
     //for deletion
     const deletePost=async(prductId)=>{
-     const url='/api/posts?id='+prductId;
+     const url='http://localhost:4000/posts/'+prductId;
      return await axios.delete(url);
     }
     const queryClient=useQueryClient();//this is to invalidate and trigure the change on success after del to auto fetch

@@ -20,7 +20,7 @@ const AddDetails = () => {
     const queryClient = useQueryClient();
     //now call the api with seperate fuction to make it modular
     const addPosts=async(productdata)=>{
-        const add=await axios.post("/api/posts",productdata)
+        const add=await axios.post("http://localhost:4000/posts",productdata)
     }
     //use mutations
     //give alias name for mutate if you want
