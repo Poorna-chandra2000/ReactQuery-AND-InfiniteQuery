@@ -1,9 +1,11 @@
-const jsonServer = require("json-server");
-const server = jsonServer.create();
-const router = jsonServer.router("db.json"); // Path to your db.json
-const middlewares = jsonServer.defaults();
+import { createServer } from "json-server";
+
+const server = createServer();
+const router = require('json-server').router('db.json');
+const middlewares = require('json-server').defaults();
 
 server.use(middlewares);
 server.use(router);
 
-module.exports = server;
+// This is necessary for Vercel serverless functions
+export default server.handle;
