@@ -12,7 +12,7 @@ console.log(singleProduct);
     // Fetch posts based on the selected product
     const fetchPosts = async () => {
         const url = singleProduct !== 0
-            ? `/api/posts/${singleProduct}`  // Single product URL
+            ? `/api/posts?id=${singleProduct}`  // Single product URL
             : '/api/posts';                  // All products URL
         const response = await axios.get(url);
         return response.data;
