@@ -7,7 +7,7 @@ const ProductDetailPage = () => {
     const {id}=useParams() //extract id from url
 
     const fetchproductdata=async()=>{
-        const response=await axios.get(`/api/posts/${id}`);
+        const response=await axios.get(`/api/posts/?id=${id}`);
         return response.data;
     }
 
