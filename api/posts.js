@@ -15,21 +15,19 @@ export default function handler(req, res) {
     const { method } = req;
     const data = readData(); // Read the data from db.json
 
-    // Get the ID from query if present (for GET, PUT, DELETE)
-    const { id } = req.query;
-
+    // Handle different HTTP methods
     switch (method) {
         case 'GET':
-            // If there's an ID in the query, return a single post by ID
-            if (id) {
-                const post = data.posts.find(p => p.id === id);
+            // Check if 'id' is present in the query parameters
+            if (req.query.id) {
+                const post = data.posts.find(p => String(p.id) === String(req.query.id));  // Ensure both are compared as strings
                 if (post) {
                     return res.status(200).json(post);
                 } else {
                     return res.status(404).json({ error: 'Post not found' });
                 }
             }
-            // Otherwise, return all posts
+            // Return all posts
             return res.status(200).json(data.posts);
 
         case 'POST':
@@ -42,10 +40,8 @@ export default function handler(req, res) {
 
         case 'PUT':
             // Handle PUT request: Update an existing post by ID
-            if (!id) {
-                return res.status(400).json({ error: 'ID is required for update' });
-            }
-            const postIndex = data.posts.findIndex(p => p.id === id);
+            const { id } = req.query;
+            const postIndex = data.posts.findIndex(p => String(p.id) === String(id));
             if (postIndex === -1) {
                 return res.status(404).json({ error: 'Post not found' });
             }
@@ -55,10 +51,8 @@ export default function handler(req, res) {
 
         case 'DELETE':
             // Handle DELETE request: Delete a post by ID
-            if (!id) {
-                return res.status(400).json({ error: 'ID is required for deletion' });
-            }
-            const postIndexToDelete = data.posts.findIndex(p => p.id === id);
+            const { deleteId } = req.query;
+            const postIndexToDelete = data.posts.findIndex(p => String(p.id) === String(deleteId));
             if (postIndexToDelete === -1) {
                 return res.status(404).json({ error: 'Post not found' });
             }
