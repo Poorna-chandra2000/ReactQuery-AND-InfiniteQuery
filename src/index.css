@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.textstroke{
+    -webkit-text-stroke: 1px white;
+    font-size: 2em;
+    font-weight: 900;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.textstroke-light{
+    -webkit-text-stroke: 0.5px white;
+    font-size: 1.2em;
+    font-weight: 900;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.textstroke:hover{
+    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient from left to right */
+    -webkit-background-clip: text; /* Apply the background gradient to the text */
+    animation: gradienttext 2s linear infinite;
+    transition: all ease-in-out 2s;
+}
+
+@keyframes gradienttext{
+    0%{
+        background: linear-gradient(to right, #7a40ef, #850dbc);
+        -webkit-background-clip: text;
+    }
+    20%,30%{
+        background: linear-gradient(to right, #7a40ef, #bf5ef1);
+        -webkit-background-clip: text;
+    }
+    100%{
+        background: linear-gradient(to left, #850dbc, #7a40ef);
+        -webkit-background-clip: text;
+    }
+}
+
+.shine{
+    position: relative;
+    overflow: hidden;
+}
+
+.shine:before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height: 100%;
+    background: white;
+    transform:skew(20deg,20deg);
+    transform: rotate(27deg);
+    z-index:1;
+    right: -100%;
+    opacity: 10%;
+    animation: shineanimation 3s linear infinite;
+}
+
+@keyframes shineanimation{
+    0%{
+        right: -100%;
+    }
+    100%{
+        right: 100%;
+    }
+}
